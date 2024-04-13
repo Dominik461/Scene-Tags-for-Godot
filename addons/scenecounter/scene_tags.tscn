@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://bv8oob2skqouf"]
+
+[ext_resource type="Script" path="res://addons/scenecounter/List.gd" id="1_dhvrg"]
+
+[node name="Scene Tags" type="Control"]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Project" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="Tag Select" type="HBoxContainer" parent="Project"]
+layout_mode = 2
+
+[node name="List" type="OptionButton" parent="Project/Tag Select"]
+layout_mode = 2
+script = ExtResource("1_dhvrg")
+
+[node name="Scene List" type="VBoxContainer" parent="Project"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Project/Scene List"]
+layout_mode = 2
+text = "hgfhgfhgfhgf"
+editable = false
+clear_button_enabled = true
