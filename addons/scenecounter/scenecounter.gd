@@ -1,18 +1,59 @@
 @tool
 extends EditorPlugin
 
+var scene_tag = preload("res://addons/scenecounter/scene_tag.gd")
+var scene_tags = {}
 var dock
 
 func _enter_tree():
 	# Initialization of the plugin goes here.
 	dock = preload("res://addons/scenecounter/scene_tags.tscn").instantiate()
-	add_custom_type("scene_tag", "Node", preload("scene_tag.gd"), preload("icon.png"))
+	add_custom_type("scene_tag", "Node", scene_tag, preload("icon.png"))
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, dock)
-
 
 
 func _exit_tree():
 	# Clean-up of the plugin goes here.
 	remove_custom_type("scene_tag")
-	remove_control_from_docks(dock)
+		remove_control_from_docks(dock)
 	dock.free()
+	
+func _apply_changes():
+		var filepaths = getFilePathsByExtension("res://", "tscn", true)
+		scene_tags = {}
+		for filepath in filepaths:
+			var scene = load(filepath)
+			if scene:
+				var instance = scene.instantiate()
+				for child in instance.get_children():	
+					if child.name == "scene_tag":
+						scene_tags[child] = filepath
+						continue
+		
+		print(scene_tags)
+	
+func getFilePathsByExtension(directoryPath: String, extension: String, recursive: bool = true) -> Array:
+	var dir = DirAccess.open(directoryPath)
+	if !dir:
+		printerr("Warning: could not open directory: ", directoryPath)
+		return []
+
+	if dir.list_dir_begin() != OK:
+		printerr("Warning: could not list contents of: ", directoryPath)
+		return []
+
+	var filePaths = []
+	var fileName = dir.get_next()
+
+	while fileName != "":
+		if dir.current_is_dir():	
+			if recursive:
+				var dirPath = dir.get_current_dir() + "/" + fileName
+				filePaths += getFilePathsByExtension(dirPath, extension, recursive)
+		else:
+			if fileName.get_extension() == extension:
+				var filePath = dir.get_current_dir() + "/" + fileName
+				filePaths.append(filePath)
+	
+		fileName = dir.get_next()
+	return filePaths
