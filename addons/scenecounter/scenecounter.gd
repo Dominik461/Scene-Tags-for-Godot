@@ -2,7 +2,6 @@
 extends EditorPlugin
 
 var scene_tag = preload("res://addons/scenecounter/scene_tag.gd")
-var scene_tags = {}
 var dock
 
 func _enter_tree():
@@ -20,7 +19,7 @@ func _exit_tree():
 	
 func _apply_changes():
 		var filepaths = getFilePathsByExtension("res://", "tscn", true)
-		scene_tags = {}
+		var scene_tags = {}
 		for filepath in filepaths:
 			var scene = load(filepath)
 			if scene:
@@ -30,6 +29,8 @@ func _apply_changes():
 						scene_tags[child] = filepath
 						continue
 		
+		var file = FileAccess.open("res://addons/scenecounter/tag_data.data", FileAccess.WRITE)
+		file.store_string(str(scene_tags))
 		print(scene_tags)
 	
 func getFilePathsByExtension(directoryPath: String, extension: String, recursive: bool = true) -> Array:
