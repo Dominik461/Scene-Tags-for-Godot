@@ -15,7 +15,7 @@ func _enter_tree():
 func _exit_tree():
 	# Clean-up of the plugin goes here.
 	remove_custom_type("scene_tag")
-		remove_control_from_docks(dock)
+	remove_control_from_docks(dock)
 	dock.free()
 	
 func _apply_changes():

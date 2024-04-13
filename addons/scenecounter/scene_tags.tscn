@@ -4,6 +4,7 @@
 
 [node name="Scene Tags" type="Control"]
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -20,6 +21,14 @@ layout_mode = 2
 
 [node name="List" type="OptionButton" parent="Project/Tag Select"]
 layout_mode = 2
+item_count = 3
+selected = 0
+popup/item_0/text = "Test 0"
+popup/item_0/id = 0
+popup/item_1/text = "Test 1"
+popup/item_1/id = 1
+popup/item_2/text = "Test 2"
+popup/item_2/id = 2
 script = ExtResource("1_dhvrg")
 
 [node name="Scene List" type="VBoxContainer" parent="Project"]
