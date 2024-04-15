@@ -5,11 +5,13 @@ var changeList = true
 var data_received
 var listNode
 var sceneList
+var counterLabel
 var sceneButton_scene = load("res://addons/scenecounter/scene_button.tscn")
 
 func _ready():
 	listNode = $"Project/Tag Select/List" as OptionButton
 	sceneList = $"Project/Scene List" as VBoxContainer
+	counterLabel = $"Project/Tag Select/LineEdit" as LineEdit
 	listNode.item_selected.connect(on_tag_selected)
 
 func _process(delta):
@@ -39,6 +41,8 @@ func _process(delta):
 					sceneButton.setName(data_received[key].get_file())
 					sceneList.add_child(sceneButton)
 					#itemList.add_item(data_received[key])
+			
+			counterLabel.text = str(sceneList.get_child_count(true)) + " scene/s"
 
 
 		changeList = false

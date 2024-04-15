@@ -44,5 +44,10 @@ popup/item_6/text = "COLLACTABLE"
 popup/item_6/id = 6
 script = ExtResource("2_smy2u")
 
+[node name="LineEdit" type="LineEdit" parent="Project/Tag Select"]
+layout_mode = 2
+text = "0 scene/s"
+editable = false
+
 [node name="Scene List" type="VBoxContainer" parent="Project"]
 layout_mode = 2

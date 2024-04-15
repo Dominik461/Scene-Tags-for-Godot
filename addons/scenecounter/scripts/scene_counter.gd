@@ -9,6 +9,8 @@ func _enter_tree():
 	dock = preload("res://addons/scenecounter/scene_tags.tscn").instantiate()
 	add_custom_type("scene_tag", "Node", scene_tag, preload("../icon.png"))
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, dock)
+	var d = dock as Control
+	d.custom_minimum_size = Vector2(200,0)
 
 func _exit_tree():
 	# Clean-up of the plugin goes here.
