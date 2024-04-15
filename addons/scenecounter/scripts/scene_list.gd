@@ -34,11 +34,9 @@ func _process(delta):
 			#print("Type")
 			#print(type_string(typeof(data_received)))
 			for key in data_received.keys():
-				print("for " + key + ", listNode key: " + str(listNode.selected))
-				if key == str(listNode.selected):
-					print("I should do something")
+				if key == str(listNode.selected):					
 					var sceneButton = sceneButton_scene.instantiate()
-					sceneButton.setName(data_received[key])
+					sceneButton.setName(data_received[key].get_file())
 					sceneList.add_child(sceneButton)
 					#itemList.add_item(data_received[key])
 
@@ -46,6 +44,5 @@ func _process(delta):
 		changeList = false
 
 func on_tag_selected(index : int) -> void:
-	print("I changed!!")
 	changeList = true
 

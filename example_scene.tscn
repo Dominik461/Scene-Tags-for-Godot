@@ -1,6 +1,7 @@
 [gd_scene load_steps=2 format=3 uid="uid://bu1vc261pyhjq"]
 
-[ext_resource type="Script" path="res://addons/scenecounter/scene_tag.gd" id="1_f5833"]
+[ext_resource type="Script" path="res://addons/scenecounter/scripts/scene_tag.gd" id="1_f5833"]
+
 
 [node name="Node2D" type="Node2D"]
 

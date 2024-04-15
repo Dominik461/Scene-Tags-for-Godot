@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bv8oob2skqouf"]
 
-[ext_resource type="Script" path="res://addons/scenecounter/List.gd" id="1_dhvrg"]
-[ext_resource type="Script" path="res://addons/scenecounter/Scene List.gd" id="2_4d7hm"]
+[ext_resource type="Script" path="res://addons/scenecounter/scripts/scene_list.gd" id="1_076bi"]
+[ext_resource type="Script" path="res://addons/scenecounter/scripts/list.gd" id="2_smy2u"]
 
 [node name="Scene Tags" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_4d7hm")
+script = ExtResource("1_076bi")
 
 [node name="Project" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -42,7 +42,7 @@ popup/item_5/text = "ITEMS"
 popup/item_5/id = 5
 popup/item_6/text = "COLLACTABLE"
 popup/item_6/id = 6
-script = ExtResource("1_dhvrg")
+script = ExtResource("2_smy2u")
 
 [node name="Scene List" type="VBoxContainer" parent="Project"]
 layout_mode = 2
