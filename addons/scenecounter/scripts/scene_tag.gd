@@ -22,3 +22,8 @@ func _ready():
 
 func _process(delta):
 	pass
+
+
+func _on_renamed():
+	if(name != "scene_tag"):
+		set_name("scene_tag")
