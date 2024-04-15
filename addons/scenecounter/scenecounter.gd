@@ -10,7 +10,6 @@ func _enter_tree():
 	add_custom_type("scene_tag", "Node", scene_tag, preload("icon.png"))
 	add_control_to_dock(DOCK_SLOT_LEFT_BL, dock)
 
-
 func _exit_tree():
 	# Clean-up of the plugin goes here.
 	remove_custom_type("scene_tag")
@@ -26,12 +25,12 @@ func _apply_changes():
 				var instance = scene.instantiate()
 				for child in instance.get_children():	
 					if child.name == "scene_tag":
-						scene_tags[child] = filepath
+						scene_tags[str(child.tag)] = filepath
 						continue
 		
 		var file = FileAccess.open("res://addons/scenecounter/tag_data.data", FileAccess.WRITE)
 		file.store_string(str(scene_tags))
-		print(scene_tags)
+		#print(scene_tags)
 	
 func getFilePathsByExtension(directoryPath: String, extension: String, recursive: bool = true) -> Array:
 	var dir = DirAccess.open(directoryPath)

@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bv8oob2skqouf"]
+[gd_scene load_steps=3 format=3 uid="uid://bv8oob2skqouf"]
 
 [ext_resource type="Script" path="res://addons/scenecounter/List.gd" id="1_dhvrg"]
+[ext_resource type="Script" path="res://addons/scenecounter/Scene List.gd" id="2_4d7hm"]
 
 [node name="Scene Tags" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_4d7hm")
 
 [node name="Project" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -21,21 +25,24 @@ layout_mode = 2
 
 [node name="List" type="OptionButton" parent="Project/Tag Select"]
 layout_mode = 2
-item_count = 3
+item_count = 7
 selected = 0
-popup/item_0/text = "Test 0"
+allow_reselect = true
+popup/item_0/text = "ENEMY"
 popup/item_0/id = 0
-popup/item_1/text = "Test 1"
+popup/item_1/text = "PLAYER"
 popup/item_1/id = 1
-popup/item_2/text = "Test 2"
+popup/item_2/text = "LEVEL"
 popup/item_2/id = 2
+popup/item_3/text = "OBSTACLE"
+popup/item_3/id = 3
+popup/item_4/text = "INTERACTABLE"
+popup/item_4/id = 4
+popup/item_5/text = "ITEMS"
+popup/item_5/id = 5
+popup/item_6/text = "COLLACTABLE"
+popup/item_6/id = 6
 script = ExtResource("1_dhvrg")
 
 [node name="Scene List" type="VBoxContainer" parent="Project"]
 layout_mode = 2
-
-[node name="LineEdit" type="LineEdit" parent="Project/Scene List"]
-layout_mode = 2
-text = "hgfhgfhgfhgf"
-editable = false
-clear_button_enabled = true
