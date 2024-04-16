@@ -28,7 +28,8 @@ func _save_external_data():
 				var instance = scene.instantiate()
 				for child in instance.get_children():
 					if child.name == "scene_tag":
-						scene_tags[str(child.tag)] = filepath
+						print(filepath)
+						scene_tags[filepath] = str(child.tag)
 						continue
 		
 		var file = FileAccess.open("res://addons/scenecounter/tag_data.data", FileAccess.WRITE)
@@ -54,7 +55,6 @@ func getFilePathsByExtension(directoryPath: String, extension: String, recursive
 				filePaths += getFilePathsByExtension(dirPath, extension, recursive)
 		else:
 			if fileName.get_extension() == extension:
-				
 				var filePath = dir.get_current_dir() + "/" + fileName
 				filePaths.append(filePath)
 	

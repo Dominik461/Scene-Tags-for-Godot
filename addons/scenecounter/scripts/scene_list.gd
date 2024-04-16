@@ -35,10 +35,10 @@ func _process(delta):
 			
 			#print("Type")
 			#print(type_string(typeof(data_received)))
-			for key in data_received.keys():
-				if key == str(listNode.selected):					
+			for key in data_received:
+				if data_received[key] == str(listNode.selected):					
 					var sceneButton = sceneButton_scene.instantiate()
-					sceneButton.setName(data_received[key].get_file())
+					sceneButton.setName(key.get_file())
 					sceneList.add_child(sceneButton)
 					#itemList.add_item(data_received[key])
 			
