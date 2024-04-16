@@ -15,13 +15,9 @@ enum SceneType {
 
 @export
 var tag : SceneType
-		
 
 func _ready():
-	pass
-
-func _process(delta):
-	pass
+	self.renamed.connect(_on_renamed)
 
 
 func _on_renamed():

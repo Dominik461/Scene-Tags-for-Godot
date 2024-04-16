@@ -1,52 +1,48 @@
 @tool
 extends Control
 
-var changeList = true
+var change_list = true
 var data_received
-var listNode
-var sceneList
-var counterLabel
-var sceneButton_scene = load("res://addons/scenecounter/scene_button.tscn")
+var tag_option_node
+var scene_list
+var counter_label
+var button_scene = load("res://addons/scenecounter/scene_button.tscn")
 
 func _ready():
-	listNode = $"Project/Tag Select/List" as OptionButton
-	sceneList = $"Project/Scene List" as VBoxContainer
-	counterLabel = $"Project/Tag Select/LineEdit" as LineEdit
-	listNode.item_selected.connect(on_tag_selected)
+	tag_option_node = $"Project/Tag Select/List" as OptionButton
+	scene_list = $"Project/Scene List" as VBoxContainer
+	counter_label = $"Project/Tag Select/LineEdit" as LineEdit
+	tag_option_node.item_selected.connect(on_tag_selected)
 
 func _process(delta):
 
-	if changeList:
+	if change_list:
 		
-		for n in sceneList.get_children():
-			sceneList.remove_child(n)
+		for n in scene_list.get_children():
+			scene_list.remove_child(n)
 			n.queue_free()
-		#print(listNode)
-		#print(listNode.selected)
 		
 		var json = JSON.new()
 		var file = FileAccess.open("res://addons/scenecounter/tag_data.data", FileAccess.READ)
 		var error = json.parse(file.get_as_text())
 		
-		#print("Error " + str(error))
 		
 		if error == OK:
 			data_received = json.data
 			
-			#print("Type")
-			#print(type_string(typeof(data_received)))
+		
 			for key in data_received:
-				if data_received[key] == str(listNode.selected):					
-					var sceneButton = sceneButton_scene.instantiate()
-					sceneButton.setName(key.get_file())
-					sceneList.add_child(sceneButton)
-					#itemList.add_item(data_received[key])
+				if data_received[key] == str(tag_option_node.selected):					
+					var button = button_scene.instantiate()
+					button.init(key.get_file())
+					scene_list.add_child(button)
+		
 			
-			counterLabel.text = str(sceneList.get_child_count(true)) + " scene/s"
+			counter_label.text = str(scene_list.get_child_count(true)) + " scene/s"
 
 
-		changeList = false
+		change_list = false
 
 func on_tag_selected(index : int) -> void:
-	changeList = true
+	change_list = true
 
