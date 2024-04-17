@@ -46,9 +46,11 @@ script = ExtResource("2_smy2u")
 
 [node name="LineEdit" type="LineEdit" parent="Project/Tag Select"]
 layout_mode = 2
-text = "0 scene/s"
+text = "1 scene/s"
 editable = false
 expand_to_text_length = true
 
 [node name="Scene List" type="VBoxContainer" parent="Project"]
 layout_mode = 2
+
+[connection signal="pressed" from="Project/Scene List/SceneButton" to="Project/Scene List/SceneButton" method="_on_pressed"]
