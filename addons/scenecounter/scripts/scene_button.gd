@@ -10,7 +10,6 @@ func init(Name):
 	scene_path = Name
 
 func _on_pressed():
-	
 	if Engine.is_editor_hint():
 		var arr_open_scenes = EditorInterface.get_open_scenes()
 		var is_open = false
@@ -20,4 +19,7 @@ func _on_pressed():
 				break 
 
 		if !is_open:
+			EditorInterface.set_main_screen_editor("2D")	
 			EditorInterface.open_scene_from_path(scene_path)
+		else:
+			push_warning("Scene is already open")
